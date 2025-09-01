@@ -25,7 +25,8 @@ export const searchImages = async (query, page = 1, perPage = 20) => {
       params: {
         query,
         page,
-        per_page: perPage,
+        per_page: Math.min(perPage, 30), // Limit for better mobile performance
+        order_by: 'relevant',
       },
     });
     console.log('API Response received:', response.status);
